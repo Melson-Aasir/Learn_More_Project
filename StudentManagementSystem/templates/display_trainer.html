@@ -1,0 +1,101 @@
+
+{% extends 'navbar/adminnavbar.html' %}
+{% load static %}
+
+{% block title %}
+DisplayData
+{% endblock %}
+
+
+{% block content %}
+<head><!-- Bootstrap 5 CSS -->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">-->
+<!-- Data Table CSS -->
+<link rel='stylesheet' href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
+<!-- Font Awesome CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+</head>
+
+<style>
+
+table {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+input,select {
+    width: 100%;
+    spacing:2px;
+    height: 40px;
+    font-size: 16px;
+    color: #333;
+    padding: 0 10px;
+    background: #F5F5F5;
+    border: 1px solid #333;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.btn {
+  width: 40%;
+  height: 40px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0.9rem 2.5rem;
+  text-align: center;
+  background-color: #47AB11;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  font-size: 17px;
+}
+</style>
+
+<h2 align="center"> Trainer Details</h2>
+<table id="example" class="table table-striped" style="width:100%;">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Trainer_name</th>
+        <th>Trainer_phno</th>
+        <th>Trainer_email</th>
+        <th>Teaching_course</th>
+        <th>Trainer_city</th>
+        <th>Trainer_salary</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+
+    {% for i in data %}
+         <tr>
+             <td>{{ i.id }}</td>
+             <td>{{ i.trainer_name }}</td>
+             <td>{{ i.trainer_phno }}</td>
+             <td>{{ i.trainer_email }}</td>
+             <td>{{ i.teaching_course }}</td>
+             <td>{{ i.trainer_city }}</td>
+             <td>{{ i.trainer_salary }}</td>
+             <td><a href="{% url 'update_trainer' i.id %}">Update</a> </td>
+             <td><a href="{% url 'del_trainer' i.id %}">Delete</a> </td>
+
+         </tr>
+    {% endfor %}
+</table>
+
+<script src="{% static 'table.js' %}"></script>
+
+<!-- jQuery -->
+<script src='https://code.jquery.com/jquery-3.7.0.js'></script>
+<!-- Data Table JS -->
+<script src='https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js'></script>
+<script src='https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js'></script>
+<script src='https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js'></script>
+{% endblock %}

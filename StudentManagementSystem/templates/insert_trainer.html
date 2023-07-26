@@ -1,0 +1,100 @@
+{% extends 'navbar/adminnavbar.html' %}
+
+{% block title %}
+Insert-Trainer
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+input,select {
+    width: 100%;
+    spacing:2px;
+    height: 40px;
+    font-size: 16px;
+    color: #333;
+    padding: 0 10px;
+    background: #F5F5F5;
+    border: 1px solid #333;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.btn {
+  width: 40%;
+  height: 40px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0.9rem 2.5rem;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  font-size: 17px;
+}
+</style>
+
+
+<form action="insert-trainer" method="post">
+
+    {% csrf_token %}
+    <h1 align="center"> Insert Trainer Details </h1>
+    <table align="center" >
+        <tr>
+            <td>Trainer Name </td>
+            <td><input type="text" name="txttname"></td>
+        </tr>
+        <tr>
+            <td>Trainer Phno</td>
+            <td><input type="text" name="txttphno"></td>
+        </tr>
+        <tr>
+            <td>Trainer Email</td>
+            <td><input type="email" name="txttemail"></td>
+        </tr>
+        <tr>
+            <td>Trainer City </td>
+            <td><select name="ddlcity">
+                <option>----------select city----------</option>
+                {% for i in CityData %}
+                    <option>{{ i.city_name }}</option>
+                {% endfor %}
+
+
+            </select></td>
+        </tr>
+        <tr>
+            <td>Teaching Course</td>
+            <td><select name="ddlcourse">
+                <option>--------select course--------</option>
+                {% for i in CourseData %}
+                    <option>{{ i.course_name }}</option>
+                {% endfor %}
+
+            </select></td>
+        </tr>
+            <tr>
+            <td>Trainer Salary</td>
+            <td><input type="number" name="txtsalary"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><button type="submit" class="btn" name="btnsub" >InsertData</button></td>
+        </tr>
+</table>
+</form>
+
+{% endblock %}

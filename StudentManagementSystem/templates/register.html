@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+</head>
+<body>
+<!--<h1 align="center">User Registration</h1>-->
+<!--<h3 align="center" style="color:red" >{{ msg }} </h3>-->
+<!--<form action="regdata" method="post">-->
+<!--  {% csrf_token %}-->
+<!--  <table align="center">-->
+<!--    <tr>-->
+<!--      <td> User Name</td>-->
+<!--      <td> <input type="text" name="txtname"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td> Email</td>-->
+<!--      <td> <input type="email" name="txtemail"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td> Password</td>-->
+<!--      <td> <input type="password" name="txtpwd"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td align="center" colspan="2"> <input type="submit" name="btnsub" value="Submit"></td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--</form>-->
+<div class="wrapper">
+        <div class="form-wrapper sign-in">
+            <form action="regdata" method="post">
+
+                {% csrf_token %}
+
+                <h2>Sign Up</h2>
+                <h5 align="center" style="color:red" >{{ msg }} </h5>
+                <div class="input-group">
+                    <input type="text" name="txtname" required>
+                    <label for="">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" name="txtemail" required>
+                    <label for="">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="txtpwd" id="password-input" required>
+                    <label for="">Password</label>
+                    <span class="toggle-password" onclick="togglePasswordVisibility()"></span>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <div class="sign-link">
+                    <p>Already have an account? <a href="{% url 'log' %}" class="signIn-link">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+</div>
+ <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
